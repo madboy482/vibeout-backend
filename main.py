@@ -18,7 +18,17 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://vibeout-alpha.vercel.app","http://localhost:3000", "http://127.0.0.1:3000","http://localhost:3001","http://localhost:3002","http://localhost:3003","http://127.0.0.1:3001","http://127.0.0.1:3002","http://127.0.0.1:3003"],
+    allow_origins=[
+        "https://vibeout-alpha.vercel.app",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://localhost:3002",
+        "http://localhost:3003",
+        "http://127.0.0.1:3001",
+        "http://127.0.0.1:3002",
+        "http://127.0.0.1:3003"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,6 +48,11 @@ model = genai.GenerativeModel(
 )
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the FastAPI application!"}
 
 
 @app.post("/process_video/")
