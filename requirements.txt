@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-multipart
+google-generativeai
+aiofiles
+face_recognition
+dlib==19.22.0
